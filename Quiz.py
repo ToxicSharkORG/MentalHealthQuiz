@@ -7,7 +7,7 @@ def calculate_depression_score(answers):
 sg.theme('DarkPurple')
 def categorize_depression_level(score):
     if score <= 20:
-         x = "Congratulations you are healthy, atleast mentally, to have a healthy life and a long one, you should till consider following the golden rules"
+         x = "Congratulations you are healthy, atleast mentally, to have a healthy life and a long one, you should still consider following the golden rules"
          engine.say(x)
          engine.runAndWait()
          return "1 - Healthy"
@@ -49,24 +49,9 @@ def categorize_depression_level(score):
         Cognitive behavioral therapy-: it helps to change negative and distorted thought patterns and beliefs from mind of infected person. 
         Behavioral activation therapy-: it helps the individual “identify activities they find pleasurable and engaging, help then to enhance it and loosen stress”
         '''
-        return "5 - Very severe depression"     
-    y = '''Apart from all that, there are a few more things you can follow in your day to day life that would help you lead a healthier life, both mentally and physically.
-    these are what we like to call the Golden Rules:
-    Regular exercise can be a great help to get relief from mild depression 
-    Healthy diet-: Eating the right foods can enhance serotonin 
-    production in the brain and banish depressive symptoms. 
-    Increasing the amount of proteins, healthy fats, zinc and potassium along with fruits while simultaneously cutting processed 
-    foods and high sugar beverages will significantly improve your mental and physical health.
-    MEDITATION:
-    Meditation is a practice which involves trying to train you to be mindful and your thoughts
-    to stay in the present moment, because in the present moment there is true peace. 
-    it helps to make our mind peace and remove depression
-    Cold Showers-: Taking Very cold showers or ice baths can cause spikes in the dopamine levels and serotonin levels that can last 
-    longer than more than a few hours giving you more energy throughout the day.
-    Journaling:  Journaling at the end of the day is a great way to track your progress and also winding down. Just as the case was with Meditation,
-      Journalling also helps you be more mindful throughout the day.
-
-    ''' 
+        return "5 - Very severe depression"    
+     
+   
       
 engine = pyttsx3.init()
 
@@ -123,7 +108,7 @@ while True:
     'question16': "On a scale of 1 to 10, how often do you feel lonely or isolated?",
     'question17': "On a scale of 1 to 10, how often do you have difficulty in performing daily tasks or responsibilities?",
     'question18': "On a scale of 1 to 10, how often do you experience irritability or anger outbursts?",
-    'question19': "On a scale of 1 to 10, On a scale of 1 to 10, how often do you engage in self-isolating behaviors or withdraw from social interactions?",
+    'question19': "On a scale of 1 to 10, how often do you engage in self-isolating behaviors or withdraw from social interactions?",
     'question20': "On a scale of 1 to 10, how often do you have difficulty in managing stress or coping with life's challenges?",
 }
 
@@ -146,17 +131,33 @@ while True:
         
         score = calculate_depression_score(answers)      
         depression_level = categorize_depression_level(score)
-        
+
+        y  = '''No matter what score you get, there are a few rules everyone should follow
+        these are what we like to call the Golden Rules:# Regular exercise can be a great help to get relief from mild depression 
+        Healthy diet: Eating the right foods can enhance serotonin production in the brain and banish depressive symptoms. 
+        Increasing the amount of proteins, healthy fats, zinc and potassium along with fruits while simultaneously cutting processed 
+        foods and high sugar beverages will significantly improve your mental and physical health. MEDITATION:
+        Meditation is a practice which involves trying to train you to be mindful and your thoughts.
+        to stay in the present moment, because in the present moment there is true peace.
+        it helps to make our mind peace and remove depression
+        Cold Showers-: Taking Very cold showers or ice baths can cause spikes in the dopamine levels and serotonin levels that can last 
+        longer than more than a few hours giving you more energy throughout the day. Journaling: 
+        Journaling at the end of the day is a great way to track your progress and also winding down. Just as the case was with Meditation,
+        Journalling also helps you be more mindful throughout the day.'''
+        engine.say(y)
+        engine.runAndWait() 
         sg.popup("Quiz Results:",
                  "Depression Score: " + str(score),
-                 "Depression Level: " + depression_level)
-
+                 "Depression Level: " + depression_level,y)
+       
+        
         engine.say("Quiz Results:")
         engine.say("Depression Score: " + str(score))
         engine.say("Depression Level: " + depression_level)
+       
+
 
         
         engine.runAndWait()
 
-# Close the window
 window.close()
