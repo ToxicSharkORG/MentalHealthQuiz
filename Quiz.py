@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 import pyttsx3
+#i like cheesecakes
 
 def calculate_depression_score(answers):
     score = sum(answers.values())  
